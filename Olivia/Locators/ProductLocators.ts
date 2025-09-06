@@ -7,7 +7,9 @@ export const productLocators={
        productsDetailsTitle:"xpath=//div[@class='product-information']/h2",
        productsDetailsProductsPrice:"xpath=//div[@class='product-information']/span",
        productsDetailsProductInformations:"xpath=//div[@class='product-information']/p",
-       
+       searchProductField:"xpath=//input[@id='search_product']",
+       searchButton:"xpath=//button[@id='submit_search']",
+
      
 
 }

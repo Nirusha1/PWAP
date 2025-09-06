@@ -24,4 +24,9 @@ export class ProductPage {
     async navigateToFirstProductDetailPage(){
         await this.page.locator(productLocators.viewProductButtons).first().click();
     }
+
+    async searchProduct(searchKeyword:string):Promise<void>{
+        await this.page.locator(productLocators.searchProductField).pressSequentially(searchKeyword);
+        await this.page.locator(productLocators.searchButton).click();
+    }
 }

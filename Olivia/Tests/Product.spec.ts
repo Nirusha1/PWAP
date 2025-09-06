@@ -40,3 +40,25 @@ test('Verify Products List and Details',async({page}) =>{
     await expect(actualPrice).toContain("Rs.");
 
 });
+
+test('Verify Product Search', async({page})=>{
+
+     const loginPage = new LoginPage(page);
+    const productPage = new ProductPage(page);
+
+    //Login
+    await loginPage.goToLoginPage();
+    await loginPage.validLogin();
+
+    //await page.screenshot({path:'homepage.png'});
+    await productPage.navigateToProductsPage();
+
+    const search_keyword="Blue Top";
+    await productPage.searchProduct(search_keyword);
+
+    //Product List is displayed successfully
+    const numberOfProducts = await productPage.getCountOfProductsOnDisplay();
+    await expect(numberOfProducts).toBeGreaterThan(0);
+    const searchedProductTitle= await page.locator(productLocators.productsList).first().textContent();
+    await expect(searchedProductTitle).toContain(search_keyword);
+});
