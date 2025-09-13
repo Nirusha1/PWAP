@@ -24,4 +24,19 @@ export class ProductPage {
     async navigateToFirstProductDetailPage(){
         await this.page.locator(productLocators.viewProductButtons).first().click();
     }
+
+    async searchProduct(searchKeyword:string):Promise<void>{
+        await this.page.locator(productLocators.searchProductField).pressSequentially(searchKeyword);
+        await this.page.locator(productLocators.searchButton).click();
+    }
+
+    async scrollToProductList(){
+        await this.page.locator(productLocators.firstProductAddToCartButton).scrollIntoViewIfNeeded;
+    }
+
+    async navigateToProductSubCategory(){
+        await this.page.locator(productLocators.womenCategoryLink).click();
+        await this.page.locator(productLocators.topsSubCategoryLink).dblclick();
+    }
+
 }
