@@ -9,7 +9,10 @@ export const productLocators={
        productsDetailsProductInformations:"xpath=//div[@class='product-information']/p",
        searchProductField:"xpath=//input[@id='search_product']",
        searchButton:"xpath=//button[@id='submit_search']",
+       womenCategoryLink:"xpath=//a[@data-parent='#accordian' and @href='#Women']",
+       topsSubCategoryLink:"xpath=(//a[contains(text(), 'Tops')])[1]",
+       productsCategoryPageTitle:"xpath=//h2[@class='title text-center']",
+       firstProductAddToCartButton:"xpath=(//a[@data-product-id='1'])[1]",
 
-     
 
 }

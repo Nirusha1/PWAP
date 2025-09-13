@@ -43,7 +43,7 @@ test('Verify Products List and Details',async({page}) =>{
 
 test('Verify Product Search', async({page})=>{
 
-     const loginPage = new LoginPage(page);
+    const loginPage = new LoginPage(page);
     const productPage = new ProductPage(page);
 
     //Login
@@ -61,4 +61,20 @@ test('Verify Product Search', async({page})=>{
     await expect(numberOfProducts).toBeGreaterThan(0);
     const searchedProductTitle= await page.locator(productLocators.productsList).first().textContent();
     await expect(searchedProductTitle).toContain(search_keyword);
+});
+
+test("Verify Sub Category Navigation", async({page})=>{
+    const loginPage = new LoginPage(page);
+    const productPage = new ProductPage(page);
+
+    //Login
+    await loginPage.goToLoginPage();
+    await loginPage.validLogin();
+
+    //await page.screenshot({path:'homepage.png'});
+    await productPage.navigateToProductsPage();
+    await productPage.scrollToProductList();
+    await productPage.navigateToProductSubCategory();
+    const actualCategoryTitle = await page.locator(productLocators.productsCategoryPageTitle).textContent();
+    await expect(actualCategoryTitle).toContain("Women - Tops Products");
 });

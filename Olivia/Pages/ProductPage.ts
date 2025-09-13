@@ -29,4 +29,14 @@ export class ProductPage {
         await this.page.locator(productLocators.searchProductField).pressSequentially(searchKeyword);
         await this.page.locator(productLocators.searchButton).click();
     }
+
+    async scrollToProductList(){
+        await this.page.locator(productLocators.firstProductAddToCartButton).scrollIntoViewIfNeeded;
+    }
+
+    async navigateToProductSubCategory(){
+        await this.page.locator(productLocators.womenCategoryLink).click();
+        await this.page.locator(productLocators.topsSubCategoryLink).dblclick();
+    }
+
 }
