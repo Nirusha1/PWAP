@@ -1,6 +1,12 @@
 import { Page } from '@playwright/test';
 import {productLocators} from '../Locators/ProductLocators';
 
+interface ProductDetail {
+  productTitle: string;
+  productPrice: string;
+}
+
+
 export class ProductPage {
     private page: Page;
 
@@ -39,4 +45,37 @@ export class ProductPage {
         await this.page.locator(productLocators.topsSubCategoryLink).dblclick();
     }
 
+    async getProductDetail(i: number): Promise<ProductDetail> {
+  const productTitle = await this.page
+    .locator(productLocators.productInfoTitles)
+    .nth(i)
+    .innerText();
+
+  const productPrice = await this.page
+    .locator(productLocators.productInfoPrices)
+    .nth(i)
+    .innerText();
+
+  return {
+    productTitle,
+    productPrice
+  };
+
+}
+
+async addFirstProductToCart(): Promise<void> {
+    await this.page.locator(productLocators.firstProductAddToCartButton).click();
+  }
+
+  async addSecondProductToCart(): Promise<void> {
+    await this.page.locator(productLocators.secondProductAddToCartButton).click();
+  }
+
+  async getProductAddedToCartSuccessMessage(): Promise<string> {
+    return this.page.locator(productLocators.productAddedToCartSuccessMessage).innerText();
+  }
+
+  async clickContinueShoppingButton(): Promise<void> {
+    await this.page.locator(productLocators.continueShoppingButton).click();
+  }
 }
