@@ -13,6 +13,9 @@ export const productLocators={
        topsSubCategoryLink:"xpath=(//a[contains(text(), 'Tops')])[1]",
        productsCategoryPageTitle:"xpath=//h2[@class='title text-center']",
        firstProductAddToCartButton:"xpath=(//a[@data-product-id='1'])[1]",
-
-
+       productInfoTitles:"xpath=//div[@class='productinfo text-center']/p",
+       productInfoPrices:"xpath=//div[@class='productinfo text-center']/h2",
+       secondProductAddToCartButton:"xpath=(//a[@data-product-id='2'])[1]",
+       productAddedToCartSuccessMessage:"xpath=(//div[@class='modal-body']//p)[1]",
+       continueShoppingButton:"xpath=//div[@class='modal-footer']/button"
 }
